@@ -13,8 +13,10 @@ Bu proje, Kişisel olarak yaptığım, Kütüphane kitap ödünç verme süreci 
 ## Kurulum
 
 1. Repoyu klonlayın: `git clone https://github.com/bahriyeliiix/LibaryM.git`
-2. Proje dizinine gidin: `cd LibaryM`
-3. Uygulamayı başlatın: `dotnet run`
+2. appsettings.json dosyasında MsSql ConnectionString girin: `"DevConnection": "Server=yourServer;Database=yourDb;User Id=userID;Password=userPassword;TrustServerCertificate=true"`
+3. PMConsole'a açın ve çalıştırın : `update-database`
+4. Proje dizinine gidin: `cd LibaryM`
+5. Uygulamayı başlatın: `dotnet run`
 
 ## Kullanım
 
