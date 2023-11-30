@@ -1,0 +1,33 @@
+﻿@using Model.DTOs.BorrowedBook;
+<!-- Borrow.cshtml -->
+@model BorrowViewModel
+
+<h2>Kitap Ödünç Ver</h2>
+
+<form method="post" asp-action="Borrow">
+    <div class="form-group">
+        <label asp-for="BookId">Kitabın Id'si</label>
+        <input asp-for="BookId" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="BookName">Adı</label>
+        <input asp-for="BookName" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="BookAuthor">Yazarı</label>
+        <input asp-for="BookAuthor" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="BorrowDate">Verilen Tarih</label>
+        <input asp-for="BorrowDate" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="ReturnDate">Geri Getirilecek Tarih</label>
+        <input asp-for="ReturnDate" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BorrowerName">Alan Kişinin Adı</label>
+        <input asp-for="BorrowerName" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Ödünç Ver</button>
+</form>

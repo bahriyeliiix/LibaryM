@@ -1,0 +1,68 @@
+﻿@using Model.DTOs.Book;
+
+@model BookForViewWithTotalDto
+
+<h2>Kitaplık</h2>
+<div class="row">
+
+    <div class="col-md-12 text-end">
+        <a asp-action="New" asp-controller="Book" class="btn btn-primary">Yeni Ekle</a>
+    </div>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Adı</th>
+            <th>Yazar</th>
+            <th>Resim</th>
+            <th>Ödünç Verilebilir</th>
+            <th>Ödünç Alan</th>
+            <th>Geri Getirme Tarihi</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Book)
+        {
+            <tr>
+                <td>@book.Book.Name</td>
+                <td>@book.Book.Author</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(book.Book.ImageURL))
+                    {
+                        <img src="~/images/@book.Book.ImageURL" alt="Kitap Resmi" class="book-image" />
+                    }
+                    else
+                    {
+                        <span>Resim Yok</span>
+                    }
+                </td>
+                <td>
+                    @if (book.IsAvailable)
+                    {
+                        <span style="color: green;">Evet</span>
+                    }
+                    else
+                    {
+                        <span style="color: red;">Hayır</span>
+                    }
+                </td>
+
+                @if (!book.IsAvailable)
+                {
+                    <td>@book.Borrower</td>
+                    <td>@book.ReturnDate</td>
+                    <td><span style="color: blue;">Ödünç Alındı</span></td>
+                }
+                else
+                {
+                    <td>--</td>
+                    <td>--</td>
+                    <td>
+                        <a class="btn btn-primary" asp-controller="Book" asp-action="Borrow" asp-route-bookId="@book.Book.Id" asp-route-bookName="@book.Book.Name" asp-route-bookAuthor="@book.Book.Author">Ödünç Ver</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
